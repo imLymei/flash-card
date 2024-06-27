@@ -2,7 +2,6 @@
 
 import FlashCard from '@/components/FlashCard';
 import useDrag from '@/hooks/useDrag';
-import { supabase } from '@/lib/supabase/client';
 import { clamp, cn } from '@/lib/utils';
 import { flashCardsContext } from '@/providers/FlashCardsProvider';
 import { useContext, useEffect, useState } from 'react';
