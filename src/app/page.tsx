@@ -28,6 +28,8 @@ export default function Home() {
 
     // Swipe top
     if (willDelete) {
+      if (!actualFlashCard) return;
+
       updateFlashCard(actualFlashCard.id, {
         completed_at: new Date().toISOString(),
       }).then((flashCard) => {
@@ -46,6 +48,8 @@ export default function Home() {
 
     // Swipe X
     if (willSwipe) {
+      if (!actualFlashCard) return;
+
       // Swipe left
       if (diff > 0) {
         setIndex((index) => Math.max(index - 1, 0));
