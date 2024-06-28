@@ -17,9 +17,9 @@ export default function Home() {
   const actualFlashCard = flashCards[index];
 
   const diff = endPosition.x - startPosition.x;
-  const willSwipe = Math.abs(diff) > 120;
+  const willSwipe = Math.abs(diff) > 75;
   const diffY = endPosition.y - startPosition.y;
-  const willDelete = diffY < -250;
+  const willDelete = diffY < -200;
 
   useEffect(() => {
     if (isDragging) return;
