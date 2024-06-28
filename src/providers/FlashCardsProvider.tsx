@@ -17,6 +17,7 @@ export const flashCardsContext = createContext<{
     flashCard: TablesUpdate<'flash_cards'>,
   ) => Promise<Tables<'flash_cards'> | undefined>;
   deleteFlashCard: (id: number) => Promise<Tables<'flash_cards'> | undefined>;
+  updateFlashCards: () => void;
 }>({
   flashCards: [],
   async addFlashCard() {
@@ -29,6 +30,7 @@ export const flashCardsContext = createContext<{
     return undefined;
   },
   setFlashCards() {},
+  updateFlashCards() {},
 });
 
 export default function FlashCardsProvider({
@@ -74,15 +76,20 @@ export default function FlashCardsProvider({
     return data[0];
   }
 
-  useEffect(() => {
+  function updateFlashCards() {
     supabase
       .from('flash_cards')
       .select()
       .is('completed_at', null)
+      .order('last_review', { nullsFirst: true, ascending: true })
       .then(({ data }) => {
         if (!data) return;
         setFlashCards(data);
       });
+  }
+
+  useEffect(() => {
+    updateFlashCards();
   }, []);
 
   return (
@@ -93,6 +100,7 @@ export default function FlashCardsProvider({
         addFlashCard,
         updateFlashCard,
         deleteFlashCard,
+        updateFlashCards,
       }}
     >
       {children}

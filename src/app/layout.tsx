@@ -19,14 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body
-        className={cn(
-          'flex flex-col h-screen bg-neutral-950 text-neutral-300',
-          inter.className
-        )}
-      >
+      <body className={cn('bg-neutral-950 text-neutral-300', inter.className)}>
         <FlashCardsProvider>
-          <main className='flex-1 overflow-auto'>{children}</main>
+          <main className='h-screen overflow-hidden'>{children}</main>
           <Navbar />
         </FlashCardsProvider>
       </body>
