@@ -17,7 +17,7 @@ export default function Navbar() {
   const { setFlashCards } = useContext(flashCardsContext);
 
   return (
-    <div className='absolute inset-0 overflow-hidden'>
+    <div className='pointer-events-none absolute inset-0 overflow-hidden'>
       <form
         onSubmit={(event) => {
           event.preventDefault();
