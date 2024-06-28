@@ -47,7 +47,7 @@ export default function Navbar() {
             });
         }}
         className={cn(
-          'absolute inset-0 z-20 flex flex-col gap-12 bg-neutral-900 p-12 text-2xl transition duration-200 ease-in-out',
+          'pointer-events-auto absolute inset-0 z-20 flex flex-col gap-12 bg-neutral-900 p-12 text-2xl transition duration-200 ease-in-out',
           { 'translate-y-full': !isAddingCard },
         )}
       >
@@ -94,7 +94,7 @@ export default function Navbar() {
         </div>
       </form>
 
-      <nav className='absolute bottom-0 flex w-screen justify-center p-6'>
+      <nav className='pointer-events-auto absolute bottom-0 flex w-screen justify-center p-6'>
         <button onClick={() => setIsAddingCard(true)}>
           <IoIosAddCircle size={ICON_SIZE.EXTRA_LARGE} />
         </button>
