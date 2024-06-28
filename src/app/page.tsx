@@ -1,10 +1,12 @@
 'use client';
 
 import FlashCard from '@/components/FlashCard';
+import { ICON_SIZE } from '@/config';
 import useDrag from '@/hooks/useDrag';
 import { clamp, cn } from '@/lib/utils';
 import { flashCardsContext } from '@/providers/FlashCardsProvider';
 import { useContext, useEffect, useState } from 'react';
+import { TbPointerQuestion } from 'react-icons/tb';
 
 export default function Home() {
   const [index, setIndex] = useState(0);
@@ -94,7 +96,11 @@ export default function Home() {
           </p>
         </>
       ) : (
-        <p>Nenhum Flash Card Novo</p>
+        <div className='flex flex-col items-center gap-4'>
+          <TbPointerQuestion size={ICON_SIZE.EXTRA_LARGE} />
+          <p>No Flash Card Found</p>
+          <p className='text-lg'>You can add a new one down there</p>
+        </div>
       )}
     </div>
   );
